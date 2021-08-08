@@ -9,8 +9,8 @@ const Library = ({setSongs,isPlaying,audioRef,songs,setCurrentSong,libraryStatus
             <div className="library-songs">
                   {songs.map((song) => (
                     <LibrarySong
-                    songs={songs}
-                    setCurrentSong={setCurrentSong}
+                     songs={songs}
+                     setCurrentSong={setCurrentSong}
                      song={song}   
                      key={song.id} 
                      id={song.id}
