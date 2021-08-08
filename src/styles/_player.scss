@@ -60,4 +60,11 @@
     height: 16px;
     width: 16px;
   }
+
+  @media screen and (max-width:768px) {
+    .time-control{
+        width: 90%;
+    }
+      
+  }
   

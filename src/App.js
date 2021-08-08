@@ -28,8 +28,9 @@ function App() {
     const animation = Math.round(roundedCurrent / roundedDuration * 100)
     setSongInfo({...songInfo,currentTime :current,duration,animationPercentage:animation})
 }
+ 
   return (
-    <div>
+    <div className={`App ${libraryStatus ?  'library-active':""}`} >
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
         <Song currentSong={currentSong} isPlaying={isPlaying}/>
         <Player 

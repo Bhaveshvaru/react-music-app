@@ -58,7 +58,6 @@ const Player = ({setSongs,setCurrentSong,songs,currentSong,isPlaying,setIsPlayin
         playAudio(isPlaying,audioRef)
     }
 
-    //Event
     const playSongHandler =()=>{
         if (isPlaying) {
             audioRef.current.pause();
@@ -72,6 +71,14 @@ const Player = ({setSongs,setCurrentSong,songs,currentSong,isPlaying,setIsPlayin
     const trackAnim = {
         transform: `translateX(${songInfo.animationPercentage}%)`,
       };
+
+      useEffect(() => {
+        window.addEventListener('keypress', e => {
+          if(e.key === ' '){
+            setIsPlaying(!isPlaying);
+          }
+        });
+      }, [isPlaying]);
 
 return(
     <div className="player">
@@ -96,12 +103,7 @@ return(
       </div>
         <div className="play-control">
              <FontAwesomeIcon onClick={()=>skipTrackHandler('skip-back')} className="skip-back" size="2x" icon={faAngleLeft}/>
-             {isPlaying ?
-              <FontAwesomeIcon onClick={playSongHandler} className="play" size="2x" icon={faPause}/>
-             : 
-             <FontAwesomeIcon onClick={playSongHandler} className="play" size="2x" icon={faPlay}/>
-             }
-             
+             <FontAwesomeIcon  onClick={playSongHandler} className="play" size="2x" icon={isPlaying ? faPause : faPlay }/>
              <FontAwesomeIcon onClick={()=>skipTrackHandler('skip-forward')} className="skip-forward" size="2x" icon={faAngleRight}/>
         </div>
     </div>
